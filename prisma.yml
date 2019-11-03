@@ -1,0 +1,7 @@
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel: datamodel.graphql
+#output: /src/generated/
+
+generate:
+   - generator: graphql-schema
+     output: ./src/generated/prisma.graphql
