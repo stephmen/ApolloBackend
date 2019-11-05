@@ -2,7 +2,7 @@
 
 FROM node:10
 RUN mkdir -p /usr/src/backend/
-WORKDIR /user/src/backend/
+WORKDIR /usr/src/backend/
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
