@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    kompose.cmd: kompose --provider openshift --file docker-compose.yml convert
+    kompose.version: 1.19.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: prisma
+  name: prisma
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: prisma
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: prisma
+    spec:
+      containers:
+      - env:
+        - name: PRISMA_CONFIG
+          value: |
+            port: 4477
+            # uncomment the next line and provide the env var PRISMA_MANAGEMENT_API_SECRET=my-secret to activate cluster security
+            # managementApiSecret: my-secret
+            databases:
+              default:
+                connector: mysql
+                host: mysql
+                port: 3306
+                user: root
+                password: prisma
+                migrations: true
+                rawAccess: true
+        image: ' '
+        name: prisma
+        ports:
+        - containerPort: 4477
+        resources: {}
+      restartPolicy: Always
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - prisma
+      from:
+        kind: ImageStreamTag
+        name: prisma:1.23
+    type: ImageChange
+status: {}
