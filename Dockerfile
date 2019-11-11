@@ -13,7 +13,7 @@ RUN npm install
 # RUN npm ci --only=production
 COPY . .
 RUN npm install
-#RUN npm run deploy
+#
 EXPOSE 4444
 CMD [ "npm", "run", "start" ]
 
