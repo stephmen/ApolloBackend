@@ -1,4 +1,5 @@
-endpoint: http://172.30.202.249:4466
+#endpoint: http://172.30.202.249:4466
+endpoint: ${env:PRISMA_ENDPOINT}
 datamodel: datamodel.graphql
 generate:
    - generator: graphql-schema
