@@ -2,7 +2,7 @@
 const { Prisma } =require('prisma-binding');
 const db = new Prisma({
   typeDefs: 'src/generated/prisma.graphql',
-  endpoint: process.env.PRISMA_ENDPOINT,
+  endpoint: "http://172.30.113.53:4466",
   secret: process.env.PRISMA_SECRET,
   debug: true,
 });
