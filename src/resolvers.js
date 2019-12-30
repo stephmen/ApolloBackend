@@ -2,6 +2,7 @@ const { forwardTo } = require('prisma-binding');
 const resolvers = {
   Query: {
     items: forwardTo('db'),
+    item: forwardTo('db'),
   },
 
   Mutation: {
