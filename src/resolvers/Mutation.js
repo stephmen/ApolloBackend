@@ -1,17 +1,4 @@
-const { forwardTo } = require('prisma-binding');
-const resolvers = {
-  Query: {
-    items: forwardTo('db'),
-    item: forwardTo('db'),
-    itemsConnection: forwardTo('db'),
-    // async items(parent, args, ctx, info) {
-    //   console.log('Getting Items!!');
-    //   const items = await ctx.db.query.items();
-    //   return items;
-    // },
-  },
-
-  Mutation: {
+const Mutation = {
     createItem: async (parent, args, ctx, info) => {
       // TODO: check if they are logged in
 
@@ -75,5 +62,4 @@ const resolvers = {
       return user;
     },
 }
-}
-module.exports = resolvers
+module.exports = Mutation
