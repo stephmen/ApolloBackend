@@ -6,25 +6,14 @@ const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const db = require("./db");
-//require('dotenv').config({ path: 'variables.env' });
 require('dotenv').config();
-
-
 
 const typeDefs = importSchema('./src/schema.graphql');
 const Query = require('../src/resolvers/Query');
 const Mutation = require('../src/resolvers/Mutation');
-//const resolvers = require('./resolvers');
-
-// const db = new Prisma({
-//   typeDefs: './generated/prisma.graphql',
-//   endpoint: process.env.DB_ENDPOINT,
-//   secret: process.env.DB_SECRET
-// });
 
 const server = new ApolloServer({
   typeDefs,
-  //resolvers,
   resolvers: {
     Mutation,
     Query
@@ -38,21 +27,27 @@ const server = new ApolloServer({
 const app = express();
 
 var corsOptions = {
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.FRONTEND_URL, 
   credentials: true // <-- REQUIRED backend setting
 };
+//console.log(process.env.APP_SECRET)
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use((req, res, next) => { // checks for user in cookies and adds userId to the requests
   const { token } = req.cookies;
+  console.log("*********Cookies from Index***********     ")
+  console.log({...req.cookies})
+  console.log(token)
   if (token) {
-    const { userId } = jwt.verify(token, process.env.USER_SECRET);
+    const { userId } = jwt.verify(token, process.env.APP_SECRET);
     req.userId = userId;
   }
   next();
 })
 app.use(async (req, res, next) => {
+  console.log("*********REQ from Index***********     " + {...req})
+  console.log({...req})
   if (!req.userId) return next();
   const user = await db.query.user(
     { where: { id: req.userId } },

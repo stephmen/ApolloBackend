@@ -4,6 +4,20 @@ const Query = {
     items: forwardTo('db'),
     item: forwardTo('db'),
     itemsConnection: forwardTo('db'),
+    me(parent, args, ctx, info) {
+    // check if there is a current user ID
+    console.log("*****QUERY*ME*******CTX.REQ.userID*************")
+    console.log(ctx.req.userId)
+    if (!ctx.req.userId) {
+      return null;
+    }
+    return ctx.db.query.user(
+      {
+        where: { id: ctx.req.userId },
+      },
+      info
+    );
+  },
     // async items(parent, args, ctx, info) {
     //   console.log('Getting Items!!');
     //   const items = await ctx.db.query.items();
