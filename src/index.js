@@ -36,23 +36,22 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use((req, res, next) => { // checks for user in cookies and adds userId to the requests
   const { token } = req.cookies;
-  console.log("*********Cookies from Index***********     ")
-  console.log({...req.cookies})
-  console.log(token)
+
   if (token) {
     const { userId } = jwt.verify(token, process.env.APP_SECRET);
     req.userId = userId;
   }
   next();
 })
+
 app.use(async (req, res, next) => {
-  console.log("*********REQ from Index***********     " + {...req})
-  console.log({...req})
+ 
   if (!req.userId) return next();
   const user = await db.query.user(
     { where: { id: req.userId } },
     '{id, permissions, email, name}' //the graphql query to pass to the user query
   );
+  req.user = user;
   next();
 })
 

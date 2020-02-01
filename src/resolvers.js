@@ -20,7 +20,7 @@ const resolvers = {
           ...args
         }
       }, info);
-      console.log(item)
+      //console.log(item)
       return item
     },
     updateItem(parent, args, ctx, info) {

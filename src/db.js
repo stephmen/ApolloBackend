@@ -5,7 +5,7 @@ const db = new Prisma({
   //endpoint: "http://172.30.113.53:4466",
   endpoint: "http://localhost:4466",
   secret: process.env.PRISMA_SECRET,
-  debug: true,
+  debug: false,
 });
 
 module.exports = db
