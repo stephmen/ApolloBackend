@@ -43,7 +43,7 @@ app.use((req, res, next) => { // checks for user in cookies and adds userId to t
   }
   next();
 })
-
+  
 app.use(async (req, res, next) => {
  
   if (!req.userId) return next();
