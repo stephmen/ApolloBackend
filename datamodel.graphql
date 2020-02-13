@@ -15,6 +15,7 @@ type User {
   resetToken: String
   resetTokenExpiry: String
   permissions: [Permission]
+  cart: [CartItem!]!
 }
 
 type Item {
@@ -30,3 +31,30 @@ type Item {
 }
 
 
+type CartItem {
+  id: ID! @unique @id
+  quantity: Int! @default(value: 1)
+  item: Item @relation(link: INLINE)
+  user: User! @relation(link: INLINE)
+}
+
+type OrderItem {
+  id: ID! @unique @id
+  title: String!
+  description: String!
+  image: String!
+  largeImage: String!
+  price: Int!
+  quantity: Int! @default(value: 1)
+  user: User @relation(link: INLINE)
+}
+
+type Order {
+  id: ID! @unique @id
+  items: [OrderItem!]! @relation(link: INLINE)
+  total: Int!
+  user: User! @relation(link: INLINE)
+  charge: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
