@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const db = require("./db");
-require('dotenv').config();
+require('dotenv').env();
 
 const typeDefs = importSchema('./src/schema.graphql');
 const Query = require('../src/resolvers/Query');
