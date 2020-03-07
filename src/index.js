@@ -26,11 +26,25 @@ const server = new ApolloServer({
 
 const app = express();
 
+var whitelist = [process.env.FRONTEND_URL, process.env.BACKEND_URL,process.env.FRONTEND_IP,process.env.BACKEND_IP]
 var corsOptions = {
-  origin: process.env.FRONTEND_URL, 
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true // <-- REQUIRED backend setting
-};
-//console.log(process.env.APP_SECRET)
+}
+
+
+
+// var corsOptions = {
+//   origin: process.env.FRONTEND_URL, 
+//   credentials: true // <-- REQUIRED backend setting
+// };
+// //console.log(process.env.APP_SECRET)
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
