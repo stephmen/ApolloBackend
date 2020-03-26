@@ -26,7 +26,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-var whitelist = ["http://apollo-backend-myeccomv003.apps-crc.testing",process.env.FRONTEND_IP,process.env.BACKEND_IP,"http://frontend-myeccomv003.apps-crc.testing"]
+var whitelist = ["apollo-backend-myeccomv003.apps-crc.testing",process.env.FRONTEND_IP,process.env.BACKEND_IP,"frontend-myeccomv003.apps-crc.testing"]
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
