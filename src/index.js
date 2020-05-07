@@ -26,16 +26,19 @@ const server = new ApolloServer({
 
 const app = express();
 
-var whitelist = [
-  "http://prisma-myeccomv003.apps-crc.testing",
-  "prisma-myeccomv003.apps-crc.testing",
-  "http://172.30.243.169:4466",
-  process.env.BACKEND_IP,
-  "apollo-backend-myeccomv003.apps-crc.testing",
-  "http://apollo-backend-myeccomv003.apps-crc.testing",
-  process.env.FRONTEND_IP,
-  "frontend-myeccomv003.apps-crc.testing",
-  "http://frontend-myeccomv003.apps-crc.testing"]
+// var whitelist = [
+//   "http://prisma-myeccomv003.apps-crc.testing",
+//   "prisma-myeccomv003.apps-crc.testing",
+//   "http://172.30.243.169:4466",
+//   process.env.BACKEND_IP,
+//   "apollo-backend-myeccomv003.apps-crc.testing",
+//   "http://apollo-backend-myeccomv003.apps-crc.testing",
+//   process.env.FRONTEND_IP,
+//   "frontend-myeccomv003.apps-crc.testing",
+//   "http://frontend-myeccomv003.apps-crc.testing"]
+
+var whitelist = $WITHELIST
+
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -47,6 +50,7 @@ var corsOptions = {
   credentials: true // <-- REQUIRED backend setting
 }
 
+console.log(whitelist)
 
 
 // var corsOptions = {
