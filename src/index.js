@@ -37,11 +37,11 @@ const app = express();
 //   "frontend-myeccomv003.apps-crc.testing",
 //   "http://frontend-myeccomv003.apps-crc.testing"]
 
-var whitelist = process.env.$WITHELIST
+
 
 var corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+    if (process.env.$WHITELIST.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
