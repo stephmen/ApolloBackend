@@ -37,7 +37,7 @@ const app = express();
 //   "frontend-myeccomv003.apps-crc.testing",
 //   "http://frontend-myeccomv003.apps-crc.testing"]
 
-var whitelist = $WITHELIST
+var whitelist = process.env.$WITHELIST
 
 var corsOptions = {
   origin: function (origin, callback) {
