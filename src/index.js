@@ -50,7 +50,7 @@ var corsOptions = {
   credentials: true // <-- REQUIRED backend setting
 }
 
-console.log(whitelist)
+
 
 
 // var corsOptions = {
