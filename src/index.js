@@ -26,8 +26,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-var whitelist = ["http://prisma-development.apps-crc.testing", 
-"prisma-development.apps-crc.testing", "http://172.30.241.100:4466", 172.30.52.150, "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", 172.30.90.125, "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
+var whitelist = ["http://prisma-development.apps-crc.testing", "prisma-development.apps-crc.testing", "http://172.30.241.100:4466", "172.30.52.150", "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", "172.30.90.125", "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
 
 
 var corsOptions = {
