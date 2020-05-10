@@ -26,22 +26,14 @@ const server = new ApolloServer({
 
 const app = express();
 
-// var whitelist = [
-//   "http://prisma-myeccomv003.apps-crc.testing",
-//   "prisma-myeccomv003.apps-crc.testing",
-//   "http://172.30.243.169:4466",
-//   process.env.BACKEND_IP,
-//   "apollo-backend-myeccomv003.apps-crc.testing",
-//   "http://apollo-backend-myeccomv003.apps-crc.testing",
-//   process.env.FRONTEND_IP,
-//   "frontend-myeccomv003.apps-crc.testing",
-//   "http://frontend-myeccomv003.apps-crc.testing"]
-
+var whitelist = ["http://prisma-development.apps-crc.testing", 
+"prisma-development.apps-crc.testing", "http://172.30.241.100:4466", 172.30.52.150, "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", 172.30.90.125, "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
 
 
 var corsOptions = {
   origin: function (origin, callback) {
-    if (process.env.$WHITELIST.indexOf(origin) !== -1) {
+    //if (process.env.$WHITELIST.indexOf(origin) !== -1) {
+    if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
@@ -88,6 +80,8 @@ server.applyMiddleware({
   cors: false, // disables the apollo-server-express cors to allow the cors middleware use
 })
 
-app.listen({ port: 4444 }, () =>
+app.listen({ port: 4444 }, () => {
   console.log(`🚀 Server ready at http://localhost:4444${server.graphqlPath}`)
+  console.log(process.env.$WHITELIST)
+}
 );
