@@ -50,7 +50,7 @@ var corsOptions = {
 // };
 // //console.log(process.env.APP_SECRET)
 
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use((req, res, next) => { // checks for user in cookies and adds userId to the requests
   const { token } = req.cookies;
