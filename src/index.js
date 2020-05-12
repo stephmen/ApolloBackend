@@ -81,6 +81,7 @@ server.applyMiddleware({
 
 app.listen({ port: 4444 }, () => {
   console.log(`🚀 Server ready at http://localhost:4444${server.graphqlPath}`)
-  console.log(process.env.WHITELIST)
+  let whitelist2 = process.env.WHITELIST.split(', ')
+  console.log(whitelist2)
 } 
 );
