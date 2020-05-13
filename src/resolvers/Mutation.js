@@ -4,7 +4,7 @@ const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 const { transport, makeANiceEmail } = require('../mail');
 const { hasPermission } = require('../utils');
-require('dotenv').config();
+//require('dotenv').config();
 const stripe = require('../stripe');
 
 const Mutation = {
