@@ -27,7 +27,7 @@ const server = new ApolloServer({
 const app = express();
 
 const whitelist = process.env.WHITELIST.split(', ')
-
+console.log(whitelist)
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
