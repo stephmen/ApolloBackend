@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 RUN npm install
 # do not forget to add it back
-RUN npm run deploy
+#RUN npm run deploy
 EXPOSE 4444
 CMD [ "npm", "run", "start" ]
 
