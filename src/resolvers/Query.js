@@ -48,7 +48,7 @@ const Query = {
     const ownsOrder = order.user.id === ctx.req.userId;
     const hasPermissionToSeeOrder = ctx.req.user.permissions.includes('ADMIN');
     if (!ownsOrder && !hasPermissionToSeeOrder) {
-      throw new Error('You cant see this buddd');
+      throw new Error('You do not have permission to see this order');
     }
     // 4. Return the order
     return order;
