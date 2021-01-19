@@ -1,4 +1,5 @@
 const express = require('express');
+var router = express.Router()
 const { Prisma } = require('prisma-binding');
 const { ApolloServer } = require('apollo-server-express');
 const { importSchema } = require('graphql-import');
@@ -51,6 +52,14 @@ app.use((req, res, next) => { // checks for user in cookies and adds userId to t
     req.userId = userId;
   }
   next();
+})
+
+app.use(function (req, res, next) {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, function (req, res, next) {
+  console.log('Request Type:', req.method)
+  next()
 })
   
 app.use(async (req, res, next) => {
