@@ -35,6 +35,7 @@ var corsOptions = {
       console.log("Origin: " + origin)
     } else {
       callback(new Error('Not allowed by CORS'))
+      console.log(origin)
     }
   },
   credentials: true // <-- REQUIRED backend setting
