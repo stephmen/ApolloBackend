@@ -27,13 +27,20 @@ const server = new ApolloServer({
 
 const app = express();
 
+app.use( (req, res, next) => {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) => {
+  console.log('Request Type:', req.method)
+  next()
+})
 const whitelist = process.env.WHITELIST.split(', ')
 console.log(whitelist)
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true)
-      console.log("Origin: " + origin)
+      // console.log("Origin: " + origin)
     } else {
       callback(new Error('Not allowed by CORS'))
       console.log(origin)
@@ -54,13 +61,6 @@ app.use((req, res, next) => { // checks for user in cookies and adds userId to t
   next();
 })
 
-app.use( (req, res, next) => {
-  console.log('Request URL:', req.originalUrl)
-  next()
-}, (req, res, next) => {
-  console.log('Request Type:', req.method)
-  next()
-})
   
 app.use(async (req, res, next) => {
  
