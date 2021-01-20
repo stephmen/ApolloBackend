@@ -54,10 +54,10 @@ app.use((req, res, next) => { // checks for user in cookies and adds userId to t
   next();
 })
 
-app.use(function (req, res, next) {
+app.use( (req, res, next) => {
   console.log('Request URL:', req.originalUrl)
   next()
-}, function (req, res, next) {
+}, (req, res, next) => {
   console.log('Request Type:', req.method)
   next()
 })
