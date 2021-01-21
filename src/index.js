@@ -43,13 +43,13 @@ var corsOptions = {
       // console.log("Origin: " + origin)
     } else {
       callback(new Error('Not allowed by CORS'))
-      console.log(origin)
+      
     }
   },
   credentials: true // <-- REQUIRED backend setting
 }
-
-app.use(cors(corsOptions));
+//Temporary Disabled CORS
+// app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use((req, res, next) => { // checks for user in cookies and adds userId to the requests
   const { token } = req.cookies;
