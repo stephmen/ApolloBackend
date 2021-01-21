@@ -37,19 +37,20 @@ app.use( (req, res, next) => {
 const whitelist = process.env.WHITELIST.split(', ')
 console.log(whitelist)
 var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-      // console.log("Origin: " + origin)
-    } else {
-      callback(new Error('Not allowed by CORS'))
+  origin: '*',
+  // origin: function (origin, callback) {
+  //   if (whitelist.indexOf(origin) !== -1) {
+  //     callback(null, true)
+  //     // console.log("Origin: " + origin)
+  //   } else {
+  //     callback(new Error('Not allowed by CORS'))
       
-    }
-  },
+  //   }
+  // },
   credentials: true // <-- REQUIRED backend setting
 }
 //Temporary Disabled CORS
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use((req, res, next) => { // checks for user in cookies and adds userId to the requests
   const { token } = req.cookies;
