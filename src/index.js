@@ -34,19 +34,20 @@ app.use( (req, res, next) => {
   console.log('Request Type:', req.method)
   next()
 })
-const whitelist = process.env.WHITELIST.split(', ')
+
+let WHITELIST = ["http://prisma-development.apps-crc.testing",  "prisma-development.apps-crc.testing", "http://172.25.192.217:4466", 172.25.68.251, "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", 172.25.186.91, "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
+const whitelist = WHITELIST.split(', ')
 console.log(whitelist)
 var corsOptions = {
-  origin: '*',
-  // origin: function (origin, callback) {
-  //   if (whitelist.indexOf(origin) !== -1) {
-  //     callback(null, true)
-  //     // console.log("Origin: " + origin)
-  //   } else {
-  //     callback(new Error('Not allowed by CORS'))
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+      // console.log("Origin: " + origin)
+    } else {
+      callback(new Error('Not allowed by CORS'))
       
-  //   }
-  // },
+    }
+  },
   credentials: true // <-- REQUIRED backend setting
 }
 //Temporary Disabled CORS
