@@ -27,13 +27,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-app.use( (req, res, next) => {
-  console.log('Request URL:', ...req)
-  next()
-}, (req, res, next) => {
-  console.log('Request Type:', req.method)
-  next()
-})
+
 
 let WHITELIST = 'http://prisma-development.apps-crc.testing,  prisma-development.apps-crc.testing, http://172.25.192.217:4466, 172.25.68.251, apollo-backend-development.apps-crc.testing, http://apollo-backend-development.apps-crc.testing, 172.25.186.91, frontend-development.apps-crc.testing, http://frontend-development.apps-crc.testing, http://frontend-development.apps-crc.testing/graphql, http://checkout.stripe.com'
 console.log(WHITELIST)
