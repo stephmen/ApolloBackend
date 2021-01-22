@@ -35,7 +35,7 @@ app.use( (req, res, next) => {
   next()
 })
 
-let WHITELIST = ["http://prisma-development.apps-crc.testing",  "prisma-development.apps-crc.testing", "http://172.25.192.217:4466", 172.25.68.251, "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", 172.25.186.91, "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
+let WHITELIST = ["http://prisma-development.apps-crc.testing",  "prisma-development.apps-crc.testing", "http://172.25.192.217:4466", "172.25.68.251", "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", "172.25.186.91", "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
 const whitelist = WHITELIST.split(', ')
 console.log(whitelist)
 var corsOptions = {
