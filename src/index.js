@@ -37,9 +37,9 @@ const whitelist=["http://prisma-development.apps-crc.testing",  "prisma-developm
 console.log(whitelist)
 var corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
-      // console.log("Origin: " + origin)
+      console.log(origin)
     } else {
       callback(new Error('Not allowed by CORS'))
       
