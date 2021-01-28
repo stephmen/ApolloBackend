@@ -29,15 +29,15 @@ const app = express();
 
 
 
-let WHITELIST = 'http://prisma-development.apps-crc.testing,  prisma-development.apps-crc.testing, http://172.25.168.170:4466, 172.25.255.158, apollo-backend-development.apps-crc.testing, http://apollo-backend-development.apps-crc.testing, 172.25.132.200, frontend-development.apps-crc.testing, http://frontend-development.apps-crc.testing, http://frontend-development.apps-crc.testing/graphql, http://checkout.stripe.com'
-console.log(WHITELIST)
-const whitelist2 = process.env.WHITELIST2.split(', ')
-const whitelist=["http://prisma-development.apps-crc.testing",  "prisma-development.apps-crc.testing", "http://172.25.16.144:4466", "http://172.25.58.47", "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", "http://172.25.58.47", "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
+//let WHITELIST = 'http://prisma-development.apps-crc.testing,prisma-development.apps-crc.testing, http://172.25.168.170:4466, 172.25.255.158, apollo-backend-development.apps-crc.testing, http://apollo-backend-development.apps-crc.testing, 172.25.132.200, frontend-development.apps-crc.testing, http://frontend-development.apps-crc.testing, http://frontend-development.apps-crc.testing/graphql, http://checkout.stripe.com'
+console.log(process.env.WHITELIST)
+const whitelist = process.env.WHITELIST2.split(', ')
+const whitelist1=["http://prisma-development.apps-crc.testing",  "prisma-development.apps-crc.testing", "http://172.25.16.144:4466", "http://172.25.58.47", "apollo-backend-development.apps-crc.testing", "http://apollo-backend-development.apps-crc.testing", "http://172.25.58.47", "frontend-development.apps-crc.testing", "http://frontend-development.apps-crc.testing", "http://checkout.stripe.com/"]
 
 
-console.log("Whitelise 2")
-console.log(whitelist2)
 console.log("Whitelise 1")
+console.log(whitelist1)
+console.log("Whitelise")
 console.log(whitelist)
 var corsOptions = {
   origin: function (origin, callback) {
