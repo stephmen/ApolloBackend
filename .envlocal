@@ -1,4 +1,6 @@
 PRISMA_ENDPOINT="http://myeccom.com:4466"
+#PRISMA_ENDPOINT= "http://0.0.0.0:4466"
+#PRISMA_ENDPOINT= "http://localhost:4466"
 PRISMA_SECRET="prisma"
 APP_SECRET="prisma"
 STRIPE_SECRET="sk_test_bh0QAXn1x8LhONmDvaHLDKAu00sCpS9yxT"
@@ -11,7 +13,7 @@ MAIL_HOST="smtp.mailtrap.io"
 MAIL_PORT="2525"
 MAIL_USER="2af1c2bddf929f"
 MAIL_PASS="74d73a20a356dc"
-WHITELIST=http://127.0.0.1:4466, http://localhost:4466, http://myeccom.com:4466, http://localhost:7777, http://127.0.0.1:7777, http://myeccom.com:7777, http://localhost:4444, http://127.0.0.1:4444, http://myeccom.com:4444
+WHITELIST=http://127.0.0.1:4466, http://localhost:4466, http://myeccom.com:4466, http://0.0.0.0:4466/, http://localhost:7777, http://127.0.0.1:7777, http://myeccom.com:7777, http://localhost:4444, http://127.0.0.1:4444, http://myeccom.com:4444
 
 
 # FRONTEND_URL="http://172.30.57.204:7777"

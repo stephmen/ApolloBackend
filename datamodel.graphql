@@ -14,7 +14,7 @@ type User {
   password: String!
   resetToken: String
   resetTokenExpiry: String
-  permissions: [Permission]
+  permissions: [Permission]@scalarList(strategy: RELATION)
   cart: [CartItem!]!
 }
 
@@ -27,15 +27,15 @@ type Item {
   price: Int!
   createdAt: DateTime @createdAt
   updatedAt: DateTime @updatedAt
-  user: User! @relation(link: INLINE)
+  user: User! @relation(link: TABLE)
 }
 
 
 type CartItem {
   id: ID! @unique @id
   quantity: Int! @default(value: 1)
-  item: Item @relation(link: INLINE)
-  user: User! @relation(link: INLINE)
+  item: Item @relation(link: TABLE)
+  user: User! @relation(link: TABLE)
 }
 
 type OrderItem {
@@ -46,14 +46,14 @@ type OrderItem {
   largeImage: String!
   price: Int!
   quantity: Int! @default(value: 1)
-  user: User @relation(link: INLINE)
+  user: User @relation(link: TABLE)
 }
 
 type Order {
   id: ID! @unique @id
-  items: [OrderItem!]! @relation(link: INLINE)
+  items: [OrderItem!]! @relation(link: TABLE)
   total: Int!
-  user: User! @relation(link: INLINE)
+  user: User! @relation(link: TABLE)
   charge: String!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt

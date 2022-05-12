@@ -77,6 +77,7 @@ server.applyMiddleware({
 })
 
 app.listen({ port: 4444 }, () => {
+  console.log(`Bakend server is ${process.env.PRISMA_ENDPOINT}`)
   console.log(`🚀 Server ready at ${process.env.BACKEND_URL}`)
 } 
 );
